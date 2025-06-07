@@ -1,12 +1,12 @@
+// 경로가 모두 수정된 최종 script.js 코드
 window.onload = function() {
 
-    // 제공된 지도 이미지와 음원 파일에 맞춘 최종 데이터입니다.
     const soundData = [
         { 
             id: 'grandma', 
             name: '어르신들의 대화', 
-            file: 'sounds/grandma.mp3', // 할머니들의 대화 소리
-            x: 825,  // 이문1동 주민센터 위쪽 좌표
+            file: 'grandma.mp3', // 경로 수정
+            x: 825,
             y: 110,
             description: `<strong>[이문1동 주민센터 근처]</strong><br>
                           햇살 좋은 오후, 동네 어르신들이 모여 정답게 이야기를 나누는 소리. 
@@ -15,7 +15,7 @@ window.onload = function() {
         { 
             id: 'market', 
             name: '이경시장', 
-            file: 'sounds/market.mp3', // 시장 소리
+            file: 'market.mp3', // 경로 수정
             x: 415, 
             y: 840,
             description: `<strong>[활기 넘치는 이경시장]</strong><br>
@@ -25,7 +25,7 @@ window.onload = function() {
         { 
             id: 'playground', 
             name: '아파트 놀이터', 
-            file: 'sounds/playground.mp3', // 놀이터 소리
+            file: 'playground.mp3', // 경로 수정
             x: 230, 
             y: 490,
             description: `<strong>[중앙하이츠빌 아파트]</strong><br>
@@ -35,7 +35,7 @@ window.onload = function() {
         { 
             id: 'pigeon', 
             name: '골목길 비둘기', 
-            file: 'sounds/pigeon.mp3', // 비둘기 소리
+            file: 'pigeon.mp3', // 경로 수정
             x: 580,
             y: 350,
             description: `<strong>[외대역동로 26길]</strong><br>
@@ -44,21 +44,17 @@ window.onload = function() {
         }
     ];
 
-    // --- 아래 코드는 수정할 필요 없이 그대로 두세요. ---
-
     const mapContainer = document.getElementById('map-container');
     const mapImage = document.getElementById('map-image');
     const infoWindow = document.getElementById('info-window');
 
     let currentAudio = null;
 
-    // 이미지가 완전히 로드된 후에 포인트를 생성하기 위한 처리
     function initialize() {
         soundData.forEach(pointData => {
             const pointElement = document.createElement('div');
             pointElement.className = 'sound-point';
             
-            // 이미지 원본 크기를 기준으로 포인트 위치 설정
             pointElement.style.left = (pointData.x / mapImage.naturalWidth) * 100 + '%';
             pointElement.style.top = (pointData.y / mapImage.naturalHeight) * 100 + '%';
 
