@@ -1,12 +1,11 @@
 window.onload = function() {
 
-    // 학생의 추억과 사진 정보가 모두 담긴 최종 데이터입니다.
     const soundData = [
         { 
             id: 'grandma', 
             name: '어르신들의 대화', 
-            file: 'sounds/grandma.mp3',
-            images: ['images/5.png'], // 이 장소에 표시될 사진 (5.png)
+            file: 'grandma.mp3',
+            images: ['5.png'], // 경로에서 'images/' 제거
             x: 825,
             y: 110,
             description: `<strong>[한일어린이집 뒷편]</strong><br>
@@ -15,8 +14,8 @@ window.onload = function() {
         { 
             id: 'market', 
             name: '이경시장', 
-            file: 'sounds/market.mp3',
-            images: ['images/2.png', 'images/3.png', 'images/4.png'], // 시장 관련 사진들
+            file: 'market.mp3',
+            images: ['2.png', '3.png', '4.png'], // 경로에서 'images/' 제거
             x: 415, 
             y: 840,
             description: `<strong>[이경시장]</strong><br>
@@ -25,8 +24,8 @@ window.onload = function() {
         { 
             id: 'playground', 
             name: '아파트 놀이터', 
-            file: 'sounds/playground.mp3',
-            images: ['images/6.png'], // 놀이터 관련 사진
+            file: 'playground.mp3',
+            images: ['6.png'], // 경로에서 'images/' 제거
             x: 230, 
             y: 490,
             description: `<strong>[중앙하이츠빌 아파트 놀이터]</strong><br>
@@ -35,16 +34,14 @@ window.onload = function() {
         { 
             id: 'pigeon', 
             name: '골목길 비둘기', 
-            file: 'sounds/pigeon.mp3',
-            images: ['images/1.png'], // 빌라 관련 사진
+            file: 'pigeon.mp3',
+            images: ['1.png'], // 경로에서 'images/' 제거
             x: 580,
             y: 350,
             description: `<strong>[외대역동로 26길]</strong><br>
                           이상하게 초록 그물망이 걸쳐져있던 빌라에서 항상 나던 맷비둘기 소리, 무심코 지나칠 때도 많았지만 이상하게 안심이됐던 그런소리다.`
         }
     ];
-
-    // --- 아래 코드는 수정할 필요 없이 그대로 두세요. ---
 
     const mapContainer = document.getElementById('map-container');
     const mapImage = document.getElementById('map-image');
@@ -61,7 +58,6 @@ window.onload = function() {
             pointElement.style.top = (pointData.y / mapImage.naturalHeight) * 100 + '%';
 
             pointElement.addEventListener('click', function() {
-                // 오디오 재생 로직
                 if(currentAudio) {
                     currentAudio.pause();
                     currentAudio.currentTime = 0;
@@ -70,19 +66,15 @@ window.onload = function() {
                 audio.play();
                 currentAudio = audio;
 
-                // 정보창 내용 생성 로직 (이미지 + 텍스트)
                 let imagesHTML = '';
-                // pointData에 images 배열이 있으면 각 사진에 대한 HTML 태그를 만듭니다.
                 if (pointData.images && pointData.images.length > 0) {
                     pointData.images.forEach(imgSrc => {
                         imagesHTML += `<img src="${imgSrc}" class="info-window-img" alt="${pointData.name} 이미지">`;
                     });
                 }
                 
-                // 최종적으로 이미지 HTML과 설명 HTML을 합쳐서 정보창에 넣습니다.
                 infoWindow.innerHTML = imagesHTML + pointData.description;
                 
-                // 정보창 위치 설정 및 보여주기
                 infoWindow.style.left = pointElement.style.left;
                 infoWindow.style.top = pointElement.style.top;
                 infoWindow.classList.add('show');
