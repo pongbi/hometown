@@ -34,7 +34,7 @@ h1 {
     position: absolute;
     width: 22px;
     height: 22px;
-    background-color: rgba(52, 152, 219, 0.8); /* 파란색 계열로 변경 */
+    background-color: rgba(231, 76, 60, 0.8); /* 따뜻한 빨간색 계열로 변경 */
     border-radius: 50%;
     border: 2px solid white;
     cursor: pointer;
@@ -44,16 +44,19 @@ h1 {
 
 .sound-point:hover {
     transform: scale(1.6);
-    background-color: rgba(41, 128, 185, 1);
+    background-color: rgba(192, 57, 43, 1);
 }
 
+/* 정보창 스타일 수정 */
 #info-window {
     display: none;
     position: absolute;
     transform: translate(30px, -50%);
-    width: 230px;
+    width: 280px; /* 너비를 조금 넓혔습니다. */
+    max-height: 400px; /* 내용이 길어지면 스크롤되도록 최대 높이 설정 */
+    overflow-y: auto; /* 세로 스크롤 자동 생성 */
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: rgba(255, 255, 255, 0.98);
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -66,4 +69,13 @@ h1 {
 
 #info-window.show {
     display: block;
+    pointer-events: auto; /* 보일 때는 스크롤 가능하도록 설정 */
+}
+
+/* 정보창 안의 이미지 스타일 추가 */
+.info-window-img {
+    width: 100%; /* 정보창 너비에 꽉 맞춤 */
+    height: auto;
+    border-radius: 4px; /* 이미지 모서리 살짝 둥글게 */
+    margin-bottom: 12px; /* 이미지와 텍스트 사이 간격 */
 }
